@@ -1,20 +1,14 @@
 package main
 
 import (
-	"fmt"
+	"students_app/classroom"
 	"students_app/student"
 )
 
-type ClassRoom [2]student.Student
-
-func (cr ClassRoom) AddStudent() {
-	// I need to change array to slice to make this method work!
-}
-
 func main() {
-	var students ClassRoom
-	students2 := ClassRoom{{1, "Jake", 2, [3]int{4, 4, 5}}, {2, "Emily", 4, [3]int{5, 3, 4}}}
-
-	fmt.Println(students)
-	fmt.Println(students2)
+	var students classroom.ClassRoom
+	students.AddStudent(student.Student{Id: 1, Name: "Jake", Year: 4, Scores: []int{4, 4, 5}})
+	students.AddStudent(student.Student{Id: 2, Name: "Finn", Year: 3, Scores: []int{5, 3, 5}})
+	students.AddStudent(student.Student{Id: 3, Name: "Bubblegum", Year: 6, Scores: []int{5, 5, 5, 5, 5}})
+	students.DisplayStudents()
 }
