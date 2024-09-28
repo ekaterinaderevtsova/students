@@ -6,10 +6,11 @@ import (
 )
 
 func main() {
-	var students classroom.ClassRoom
-	students.AddStudent(student.Student{Id: students.GetNumStudents() + 1, Name: "Jake", Year: 4, Scores: []int{4, 4, 5}})
-	students.AddStudent(student.Student{Id: students.GetNumStudents() + 1, Name: "Finn", Year: 3, Scores: []int{5, 3, 5}})
-	students.AddStudent(student.Student{Id: students.GetNumStudents() + 1, Name: "Bubblegum", Year: 6, Scores: []int{5, 5, 5, 5, 5}})
+	var students *classroom.ClassRoom = classroom.NewClassRoom("classroom 1")
+	students.AddStudent(*student.NewStudent(students.GetNumStudents()+1, "Jake", 4, []int{4, 4, 5}))
+	students.AddStudent(*student.NewStudent(students.GetNumStudents()+1, "Finn", 3, []int{5, 3, 5}))
+	students.AddStudent(*student.NewStudent(students.GetNumStudents()+1, "Bubblegum", 6, []int{5, 5, 5, 5, 5}))
+	students.AddStudent(*student.NewStudent(students.GetNumStudents()+1, "Jane", 5, []int{4, 5, 4}))
 	students.RemoveStudentById(4)
 	students.DisplayStudents()
 }

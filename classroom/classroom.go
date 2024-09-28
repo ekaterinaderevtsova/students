@@ -11,6 +11,14 @@ type ClassRoom struct {
 	numStudents  int
 }
 
+func NewClassRoom(name string) *ClassRoom {
+	return &ClassRoom{
+		name:         name,
+		studentsList: make([]student.Student, 0, 10),
+		numStudents:  0,
+	}
+}
+
 func (cr ClassRoom) GetNumStudents() int {
 	return cr.numStudents
 }
