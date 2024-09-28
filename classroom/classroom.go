@@ -20,6 +20,30 @@ func (cr *ClassRoom) AddStudent(student student.Student) {
 	cr.numStudents++
 }
 
+func (cr *ClassRoom) RemoveStudentById(id int) {
+	for i, v := range cr.studentsList {
+		if v.Id == id {
+			indexOfStudentToRemove := i
+			cr.studentsList = append(cr.studentsList[:indexOfStudentToRemove], cr.studentsList[indexOfStudentToRemove+1:]...)
+			fmt.Println("Removed student: ", v.Id)
+			return
+		}
+	}
+	fmt.Println("Student not found!")
+}
+
+func (cr *ClassRoom) RemoveStudentByName(name string) {
+	for i, v := range cr.studentsList {
+		if v.Name == name {
+			indexOfStudentToRemove := i
+			cr.studentsList = append(cr.studentsList[:indexOfStudentToRemove], cr.studentsList[indexOfStudentToRemove+1:]...)
+			fmt.Println("Removed student: ", v.Name)
+			return
+		}
+	}
+	fmt.Println("Student not found!")
+}
+
 func (cr ClassRoom) DisplayStudents() {
 	for _, v := range cr.studentsList {
 		fmt.Println("Student ", v.Id, ":")
